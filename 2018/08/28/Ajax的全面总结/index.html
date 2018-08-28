@@ -155,13 +155,7 @@
 <p><img src="https://i.loli.net/2018/08/28/5b84f9ea6cc5b.png" alt="856764579-599cf984e62d2.png"></p>
 <p>从表格中拎出关键点：</p>
 <blockquote>
-<p>1.传递数据的方式不同：get是直接把请求数据放在url的后面，是可见的，post的请求数据不会显示在url中，是不可见的。</p>
-</blockquote>
-<blockquote>
-<p>2.数据长度和数据类型的差异：get有数据长度的的限制，且数据类型只允许ASCII字符，post在这两方面都没有限制。</p>
-</blockquote>
-<blockquote>
-<p>3.安全性的差异：get不安全，post更安全。</p>
+<p>1.传递数据的方式不同：get是直接把请求数据放在url的后面，是可见的，post的请求数据不会显示在url中，是不可见的。<br><br>2.数据长度和数据类型的差异：get有数据长度的的限制，且数据类型只允许ASCII字符，post在这两方面都没有限制。<br><br>3.安全性的差异：get不安全，post更安全。</p>
 </blockquote>
 <p><strong>由此得出的两者的使用场景：</strong> get使用较方便，适用于页面之间非敏感数据的简单传值，post使用较为安全，适用于向服务器发送密码、token等敏感数据</p>
 <h2 id="五-success和complete的区别"><a href="#五-success和complete的区别" class="headerlink" title="五.success和complete的区别"></a>五.success和complete的区别</h2><p>JQuery封装的Ajax回调函数中，success、error、complete是最常用的三个，其中，success和error很好区别，一个是请求成功调用的，另一个是请求失败调用的，从字面上就可以理解。但是success和complete容易混淆，在这里特别做一个说明：</p>
