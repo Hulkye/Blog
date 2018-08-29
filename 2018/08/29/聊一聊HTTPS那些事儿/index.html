@@ -169,7 +169,7 @@
 <h4 id="3-2-配置nginx"><a href="#3-2-配置nginx" class="headerlink" title="3.2 配置nginx"></a>3.2 配置nginx</h4><p>如下所示，配置<code>nginx，ssl_certificate</code>的路径，写成刚刚生成证书的路径即可，<code>ssl_certificate_key</code>也写为刚刚生成私钥的路径即可，如图3.2.1</p>
 <center><br><br><img src="https://i.loli.net/2018/08/29/5b862dc882009.jpg" alt=""><br><br>图3.2.1<br></center>
 
-<h4 id="3-3-重启nginx，查看效果"><a href="#3-3-重启nginx，查看效果" class="headerlink" title="3.3 重启nginx，查看效果"></a>3.3 重启nginx，查看效果</h4><p>访问++<a href="https://localhost++时，可能会弹出这种警告(如图3.3.1)，或者这种警告(如图3.3.2)，直接继续就好，这是因为咱们的证书是自己手动生成的。接下来就能看到效果了(如图3.3.3)。" target="_blank" rel="noopener">https://localhost++时，可能会弹出这种警告(如图3.3.1)，或者这种警告(如图3.3.2)，直接继续就好，这是因为咱们的证书是自己手动生成的。接下来就能看到效果了(如图3.3.3)。</a></p>
+<h4 id="3-3-重启nginx，查看效果"><a href="#3-3-重启nginx，查看效果" class="headerlink" title="3.3 重启nginx，查看效果"></a>3.3 重启nginx，查看效果</h4><p>访问<a href="https://localhost" target="_blank" rel="noopener">https://localhost</a>时，可能会弹出这种警告(如图3.3.1)，或者这种警告(如图3.3.2)，直接继续就好，这是因为咱们的证书是自己手动生成的。接下来就能看到效果了(如图3.3.3)。</p>
 <center><br><br><img src="https://i.loli.net/2018/08/29/5b862e2b8b6fa.png" alt=""><br><br>图3.3.1<br></center>
 
 <center><br><br><img src="https://i.loli.net/2018/08/29/5b862e4bdfdf0.jpg" alt=""><br><br>图3.3.2<br></center>
@@ -187,13 +187,13 @@
 <p>可是，新版的chrome并没有按照规范去做。而是在https的环境下，依然可以加载并展示http的图片/视频/音频等资源(如图4.2.1)。这是因为，其实很多目前互联网上的很多网站，还是比较混乱的，为了保证整个互联网的用户体验，chrome等浏览器，对于这种加载还是进行了宽容对待。可是，就算是这样，也不代表我们应该再https的页面中加载http的资源，毕竟，这样会失去我们最初https加密的意义，安全的网页上加载了不安全的资源，整个网页还是不安全的。<strong>所以笔者建议，即使加载http的图片资源可以展示，还是规范读者们不要这样做。</strong></p>
 <center><br><br><img src="https://i.loli.net/2018/08/29/5b862f1dde19e.jpg" alt=""><br><br>图4.2.1<br></center>
 
-<h4 id="4-3-如何解决混合资源加载问题"><a href="#4-3-如何解决混合资源加载问题" class="headerlink" title="4.3 如何解决混合资源加载问题"></a>4.3 如何解决混合资源加载问题</h4><h5 id="1-动态判断与协议相对URL"><a href="#1-动态判断与协议相对URL" class="headerlink" title="1 动态判断与协议相对URL"></a>1 动态判断与协议相对URL</h5><p>比如京东商城，在访问++<a href="http://www.jd.com++的时候，css是使用http协议加载的，如图4.3.1" target="_blank" rel="noopener">http://www.jd.com++的时候，css是使用http协议加载的，如图4.3.1</a></p>
+<h4 id="4-3-如何解决混合资源加载问题"><a href="#4-3-如何解决混合资源加载问题" class="headerlink" title="4.3 如何解决混合资源加载问题"></a>4.3 如何解决混合资源加载问题</h4><h5 id="1-动态判断与协议相对URL"><a href="#1-动态判断与协议相对URL" class="headerlink" title="1 动态判断与协议相对URL"></a>1 动态判断与协议相对URL</h5><p>比如京东商城，在访问<a href="http://www.jd.com" target="_blank" rel="noopener">http://www.jd.com</a>的时候，css是使用http协议加载的，如图4.3.1</p>
 <center><br><br><img src="https://i.loli.net/2018/08/29/5b862f6975190.jpg" alt=""><br><br>图4.3.1<br></center>
 
-<p>在使用++<a href="https://www.jd.com++的时候，静态资源均变成了相应域名的https地址，如图4.3.2" target="_blank" rel="noopener">https://www.jd.com++的时候，静态资源均变成了相应域名的https地址，如图4.3.2</a></p>
+<p>在使用<a href="https://www.jd.com" target="_blank" rel="noopener">https://www.jd.com</a>的时候，静态资源均变成了相应域名的https地址，如图4.3.2</p>
 <center><br><br><img src="https://i.loli.net/2018/08/29/5b862f9d7a914.jpg" alt=""><br><br>图4.3.2<br></center>
 
-<p>笔者更建议的是，如果自己的静态服务器，两种协议均支持(即++<a href="http://xxx.com/a.js++与++https://xxx.com/a.js++均可支持访问)的话，则直接在引用资源的时候，去掉协议头，改为相对协议，如//xxx.com/a.js。这样，请求a.js这个资源的时候，浏览器会按照当前页面的协议，进行请求，这叫做-----&quot;协议相对地址&quot;" target="_blank" rel="noopener">http://xxx.com/a.js++与++https://xxx.com/a.js++均可支持访问)的话，则直接在引用资源的时候，去掉协议头，改为相对协议，如//xxx.com/a.js。这样，请求a.js这个资源的时候，浏览器会按照当前页面的协议，进行请求，这叫做-----&quot;协议相对地址&quot;</a></p>
+<p>笔者更建议的是，如果自己的静态服务器，两种协议均支持(即<code>http://xxx.com/a.js</code>与<code>https://xxx.com/a.js</code>均可支持访问)的话，则直接在引用资源的时候，去掉协议头，改为相对协议，如<code>//xxx.com/a.js</code>。这样，请求<code>a.js</code>这个资源的时候，浏览器会按照当前页面的协议，进行请求，这叫做—–”协议相对地址”</p>
 <p>比如京东商城中的一个js资源(如图4.3.3)，写的便是协议相对地址：</p>
 <center><br><br><img src="https://i.loli.net/2018/08/29/5b862fe49a4ab.png" alt=""><br><br>图4.3.3<br></center>
 
@@ -207,13 +207,13 @@
 <h2 id="5-速度影响"><a href="#5-速度影响" class="headerlink" title="5.速度影响"></a>5.速度影响</h2><p>使用https对网站传输进行加密，虽然有很多好处，但是也有弊端，那就是</p>
 <h4 id="5-1-加密-解密的过程是需要消耗时间的"><a href="#5-1-加密-解密的过程是需要消耗时间的" class="headerlink" title="5.1 加密/解密的过程是需要消耗时间的"></a>5.1 加密/解密的过程是需要消耗时间的</h4><p>毕竟需要对传输的数据进行加密/解密，算法耗时是肯定有的。</p>
 <h4 id="5-2-交换公钥-私钥消耗时间"><a href="#5-2-交换公钥-私钥消耗时间" class="headerlink" title="5.2 交换公钥/私钥消耗时间"></a>5.2 交换公钥/私钥消耗时间</h4><p>https传输在传输之前是需要再服务端与客户端交换公钥/私钥的，这个过程也是非常耗时的。有统计称https的链接耗时是http的连接耗时的3倍。</p>
-<h4 id="5-3-跳转消耗时间"><a href="#5-3-跳转消耗时间" class="headerlink" title="5.3 跳转消耗时间"></a>5.3 跳转消耗时间</h4><p>这里还有一个影响速度的点，那就是用户在浏览器中输入网址的时候，是不会去自己输入https协议头的，如果你在浏览器中输入++<a href="http://www.jd.com++的话，默认浏览器访问的是++http://www.jd.com++的，如果我们想要用户访问https的网站的话，就要自己进行一次网页重定向，重定向也是比较耗时的操作。这都会对我们的网站速度造成影响。" target="_blank" rel="noopener">www.jd.com++的话，默认浏览器访问的是++http://www.jd.com++的，如果我们想要用户访问https的网站的话，就要自己进行一次网页重定向，重定向也是比较耗时的操作。这都会对我们的网站速度造成影响。</a></p>
+<h4 id="5-3-跳转消耗时间"><a href="#5-3-跳转消耗时间" class="headerlink" title="5.3 跳转消耗时间"></a>5.3 跳转消耗时间</h4><p>这里还有一个影响速度的点，那就是用户在浏览器中输入网址的时候，是不会去自己输入https协议头的，如果你在浏览器中输入<code>www.jd.com</code>的话，默认浏览器访问的是<code>http://www.jd.com</code>的，如果我们想要用户访问https的网站的话，就要自己进行一次网页重定向，重定向也是比较耗时的操作。这都会对我们的网站速度造成影响。</p>
 <p><br></p>
-<h2 id="6-HSTS"><a href="#6-HSTS" class="headerlink" title="6.HSTS"></a>6.HSTS</h2><p>在第5节中，我们提到了，如果用户在浏览器端，输入++<a href="http://www.jd.com++实际上，浏览器会默认将这个网址补全为++http://www.jd.com++而不是++https://www.jd.com++。" target="_blank" rel="noopener">www.jd.com++实际上，浏览器会默认将这个网址补全为++http://www.jd.com++而不是++https://www.jd.com++。</a></p>
+<h2 id="6-HSTS"><a href="#6-HSTS" class="headerlink" title="6.HSTS"></a>6.HSTS</h2><p>在第5节中，我们提到了，如果用户在浏览器端，输入<code>www.jd.com</code>实际上，浏览器会默认将这个网址补全为<code>http://www.jd.com</code>而不是<code>https://www.jd.com</code>。</p>
 <p>于是乎，我们如果想让用户访问我们的https版本网站，还得将页面强行重定向(跳转)一下。这是一个比较耗时的操作。而且有些时候，还没等我们重定向网页呢，就被运营商给劫持了。</p>
-<p>于是，接下来也跳不了了。怎么办？能不能在用户输入++<a href="http://www.jd.com++的时候，直接就访问到++https://www.jd.com++呢？" target="_blank" rel="noopener">www.jd.com++的时候，直接就访问到++https://www.jd.com++呢？</a></p>
+<p>于是，接下来也跳不了了。怎么办？能不能在用户输入<code>www.jd.com</code>的时候，直接就访问到<code>https://www.jd.com</code>+呢？</p>
 <p>当然可以，我们需要介绍一下我们的新武器了——-<strong>HSTS</strong>。</p>
-<p>其实hsts的做法比较简单，只要在用户访问网站的时候，响应头中加入<code>Strict-Transport-Security</code>这个头，浏览器接下来的访问就均会默认采用https的方式进行访问了。我们看到天猫在网站中加入了这个头部(如图6.1)，我们下次直接输入网址++<a href="http://www.tmall.com++的时候，就可以看到，浏览器提前做了浏览器的内部跳转，如图6.2" target="_blank" rel="noopener">http://www.tmall.com++的时候，就可以看到，浏览器提前做了浏览器的内部跳转，如图6.2</a></p>
+<p>其实hsts的做法比较简单，只要在用户访问网站的时候，响应头中加入<code>Strict-Transport-Security</code>这个头，浏览器接下来的访问就均会默认采用https的方式进行访问了。我们看到天猫在网站中加入了这个头部(如图6.1)，我们下次直接输入网址<code>http://www.tmall.com</code>的时候，就可以看到，浏览器提前做了浏览器的内部跳转，如图6.2</p>
 <center><br><br><img src="https://i.loli.net/2018/08/29/5b86312b5e5f7.png" alt=""><br><br>图6.1<br></center>
 
 <center><br><br><img src="https://i.loli.net/2018/08/29/5b86315c5f1be.jpg" alt=""><br><br>图6.2<br></center>
