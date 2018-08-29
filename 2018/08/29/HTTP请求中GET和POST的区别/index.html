@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>
+    HTTP请求中GET和POST的区别 | Hulkye&#39;s Blog
+  </title>
+  <meta name="description" content="还有很多梦想要去实现啊">
+  
+  <meta name="keywords" content="
+  http
+  ">
+  
+  <meta name="author" content="Haoran Ye">
+
+  <meta http-equiv="Cache-Control" content="no-transform"/>
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+  <link rel="icon" type="image/x-icon" href="https://assets-cdn.github.com/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+</head>
+
+<body id="replica-app">
+
+<nav class="navbar-wrapper">
+  <div class="navbar">
+    <div class="container clearfix">
+      <a href="/" class="navbar-logo"><i class="fa fa-github"></i></a>
+
+      <div class="navbar-search float-left desktop-only">
+        <div class="navbar-search-form">
+          <label for="gsc-i-id1">This website</label>
+          <div id="google-search">
+            <gcse:search></gcse:search>
+          </div>
+        </div>
+      </div>
+
+      <ul class="navbar-nav float-left">
+        
+        <li><a href="/archives">Archives</a></li>
+        
+        
+        <li><a href="/categories">Categories</a></li>
+        
+        
+        <li><a href="/tags">Tags</a></li>
+        
+        
+        <li class="desktop-only"><a href="/atom.xml" target="_blank">RSS</a></li>
+        
+      </ul>
+
+      <ul class="navbar-nav user-nav float-right desktop-only">
+        <li class="user-nav-notification">
+          <a><span class="user-nav-unread"></span><i class="fa fa-bell"></i></a>
+        </li>
+        <li>
+          <a><i class="fa fa-plus"></i> <i class="fa fa-caret-down"></i></a>
+        </li>
+        <li class="user-nav-logo">
+          <a><img src="https://i.loli.net/2018/08/28/5b84c9d03a282.jpg"> <i class="fa fa-caret-down"></i></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="main-container">
+  <header class="header-wrapper desktop-only">
+  <div class="container header-site-detail">
+    <ul class="header-toolbar">
+      <li class="clearfix">
+        <a href="/archives" class="header-toolbar-left"><i
+                  class="fa fa-file-text"></i> Posts </a>
+        <a href="/archives"
+           class="header-toolbar-right"> 5 </a>
+      </li>
+      <li>
+        <a href="/tags" class="header-toolbar-left"><i
+                  class="fa fa-tags"></i> Tags </a>
+        <a href="/tags"
+           class="header-toolbar-right"> 8 </a>
+      </li>
+      <li>
+        <a href="/categories" class="header-toolbar-left"><i
+                  class="fa fa-folder-open"></i> Categories </a>
+        <a href="/categories"
+           class="header-toolbar-right"> 3 </a>
+      </li>
+    </ul>
+    <h2 class="header-title">
+      <i class="fa fa-book text-muted"></i>
+      <a href="/">Hulkye&#39;s Blog</a>
+      
+      
+    </h2>
+  </div>
+
+  <div class="container">
+    <div class="header-tab-wrapper clearfix">
+      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
+      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
+      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
+      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
+      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
+    </div>
+  </div>
+</header>
+
+
+<div class="post-container container">
+  <h3>
+    <i class="fa fa-user-o"></i>
+    Haoran Ye
+
+    <span class="post-date float-right" title="{{moment(1535513424000).format('MMM DD, YYYY, h:mm:ss A')}}">
+      <i class="fa fa-pencil-square-o"></i>
+      {{moment(1535513424000).fromNow()}}
+    </span>
+  </h3>
+
+  <article class="post-content">
+    <h1>HTTP请求中GET和POST的区别</h1>
+    <p>本文主要对GET与POST基本区别进行汇总并掌握，如有错误与遗漏之处，请指出。<br><br><br><br></p>
+<h2 id="1-HTTP"><a href="#1-HTTP" class="headerlink" title="1.HTTP"></a>1.HTTP</h2><blockquote>
+<p>HTTP（即超文本传输协议）是现代网络中最常见和常用的协议之一，<br><br>设计它的目的是保证客户机和服务器之间的通信。<br><br>HTTP 的工作方式是客户端与服务器之间的 “请求-响应” 协议。<br><br>客户端可以是 Web 浏览器，服务器端可以是计算机上的某些网络应用程序。<br><br>通常情况下，由浏览器向服务器发起 HTTP 请求，服务器向浏览器返回响应。<br><br>响应包含了请求的状态信息以及可能被请求的内容。</p>
+</blockquote>
+<p><br></p>
+<h2 id="2-请求方式"><a href="#2-请求方式" class="headerlink" title="2.请求方式"></a>2.请求方式</h2><blockquote>
+<p>HTTP方法有OPTIONS、GET、HEAD、POST、PUT、DELETE、TRACE、CONNECT</p>
+</blockquote>
+<p>其中两种常见的 HTTP 请求就是：<strong>GET</strong> 和 <strong>POST</strong>。</p>
+<p>区别： <strong>GET</strong>是从服务器上获取数据，<strong>POST</strong>则是向指定的资源提交要被处理的数据</p>
+<p><br></p>
+<h2 id="3-格式"><a href="#3-格式" class="headerlink" title="3.格式"></a>3.格式</h2><p>请求报文的格式:<br><br>　　　　&lt; request line &gt;<br><br>　　　　&lt; headers &gt;<br><br>　　　　&lt; blank line &gt;<br><br>　　　　&lt; request-body &gt;
+　　　　</p>
+<blockquote>
+<p>GET请求数据按照查询字符串（名称/值对）方式，放置在HTTP请求协议头（headers）中，也就是URL之后；</p>
+</blockquote>
+<p>而POST提交的数据则放在实体的主体（request-body）中。</p>
+<p><br></p>
+<h2 id="4-缓存，书签，历史记录，默认method"><a href="#4-缓存，书签，历史记录，默认method" class="headerlink" title="4.缓存，书签，历史记录，默认method"></a>4.缓存，书签，历史记录，默认method</h2><ul>
+<li>缓存：GET会被缓存，POST不能。</li>
+<li>书签：GET可收藏为书签，POST不可收藏为书签</li>
+<li>历史记录：GET请求的URL，参数会被浏览器保留在历史中,POST参数不会。</li>
+<li>默认请求：在from提交的时候，如果不指定Method，则默认为get请求。</li>
+</ul>
+<p><br></p>
+<h2 id="5-响应速度"><a href="#5-响应速度" class="headerlink" title="5.响应速度"></a>5.响应速度</h2><blockquote>
+<p>GET请求是可以被客户端缓存的。会比POST高效。</p>
+</blockquote>
+<p>AJAX环境中GET响应快速，POST需要先发送HTTP头部(headers) 再发送报文实体的主体(request-body)中的数据。</p>
+<p><br></p>
+<h2 id="6-类型限制"><a href="#6-类型限制" class="headerlink" title="6.类型限制"></a>6.类型限制</h2><p><em>GET限制数据集的值必须为ASCII字符；</em></p>
+<blockquote>
+<p>GET提交的数据将会附加在url之后，以?分开与url分开。</p>
+</blockquote>
+<p>1.以 ？ 来分隔URL和数据;<br><br>2.以&amp; 来分隔参数;<br><br>3.如果数据是英文或数字，原样发送;<br><br>4.如果数据是中文或其它字符，则进行BASE64编码<br><br>5.GET将数据的按照variable=value的形式，添加到URL后面;<br><br>如:http:// <a href="http://www.abc.com/?username=yt&amp;id=123" target="_blank" rel="noopener">www.abc.com/?username=yt&amp;id=123</a></p>
+<p><em>POST没有限制，允许二进制数据。</em></p>
+<blockquote>
+<p>POST是将数据放在请求的数据体（request-body）中，按照查询字符串（名称/值对）相对应的方式，传递到所指向URL；</p>
+</blockquote>
+<p><br></p>
+<h2 id="7-大小限制"><a href="#7-大小限制" class="headerlink" title="7.大小限制"></a>7.大小限制</h2><p><em>1.GET方式提交的数据最多只能是1024字节，POST支持较大数据传输</em></p>
+<p><em>2.HTTP协议对GET和POST都没有对长度的限制</em></p>
+<blockquote>
+<p>RFC 2616 中明确对 uri 的长度并没有限制。<br>不过虽然在RFC中并没有对uri的长度进行限制，但是各大浏览器厂家实现上限制了URL的长度。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IE对URL长度的限制是2083字节(2K+35)</span><br></pre></td></tr></table></figure>
+<p>而对于URL长度上的限制，有两方面的原因造成 ( 安全考虑 )：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">浏览器：据说早期的浏览器会对URL长度做限制。IE对URL长度会限制在2083个字符内，Chrome会崩溃。</span><br><span class="line"></span><br><span class="line">服务器：URL长了，对服务器处理也是一种负担。</span><br><span class="line"></span><br><span class="line">原本一个会话就没有多少数据，现在如果有人恶意地构造几个几M大小的URL，</span><br><span class="line"> 并不停地访问你的服务器。服务器的最大并发数显然会下降。</span><br><span class="line"></span><br><span class="line">另一种攻击方式是：把告诉服务器Content-Length是一个很大的数，</span><br><span class="line">然后只给服务器发一点儿数据，嘿嘿，服务器你就傻等着去吧。</span><br><span class="line"></span><br><span class="line">哪怕你有超时设置，这种故意的次次访问超时也能让服务器吃不了兜着走。</span><br><span class="line"></span><br><span class="line">有鉴于此，多数服务器出于安全啦、稳定啦方面的考虑，会给URL长度加限制。</span><br><span class="line"></span><br><span class="line"> 但是这个限制是针对所有HTTP请求的，与GET、POST没有关系。</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h2 id="8-实际中-—-POST比GET「相对安全」"><a href="#8-实际中-—-POST比GET「相对安全」" class="headerlink" title="8.实际中 — POST比GET「相对安全」"></a>8.实际中 — POST比GET「相对安全」</h2><p>GET所发送的数据是 URL 的一部分，<br><br>有时候会直接反应在浏览器的地址栏，<br><br><br>现在的浏览器大多会记住曾经输入过的URL（在发送密码或敏感信息时绝不要使用 GET ！）。<br><br><br>试想如果你曾经在别人电脑上填过一个很私密的表单，那么你的这份记录很可能被连没什么电脑常识的人都一览无遗。<br><br><br>但是被抓包之后的POST请求和GET请求是一样裸露的，所以这里是相对的。</p>
+<p><br></p>
+<h2 id="9-语义上-—-GET比POST「相对安全」"><a href="#9-语义上-—-GET比POST「相对安全」" class="headerlink" title="9.语义上 — GET比POST「相对安全」"></a>9.语义上 — GET比POST「相对安全」</h2><p>说 POST 比 GET 安全 也不完全对的。<br><br>根据HTTP规范，POST表示可能修改变服务器上的资源的请求。<br><br><br>在语义上（restful视角）:<br><br>GET的是获取指定URL上的资源，是读操作。<br><br>重要的一点是不论对某个资源GET多少次，它的状态是不会改变的，<br><br>在这个意义上，我们说GET是安全的（不是被密码学或者数据保护意义上的安全）。<br><br>因为GET是安全的，所以GET返回的内容可以被浏览器，Cache服务器缓存起来。<br><br><br><br>POST的语义是修改变服务器上的资源的请求，所以是不安全的，<br><br>每次提交的POST，代码都会认为这个操作会修改资源的状态，<br><br>于是，浏览器在你按下F5的时候会跳出确认框，缓存服务器不会缓存POST请求返回内容。</p>
+
+  </article>
+</div>
+
+
+    
+
+
+
+
+</div>
+
+<div class="footer-wrapper container">
+  <footer class="footer clearfix">
+    <div class="clearfix">
+    <a href="http://web-hub.cn" class="footer-logo">
+      <i class="fa fa-github"></i>
+    </a>
+    <ul class="footer-social-link">
+      <li>© 2018 Haoran Ye</li>
+      <li><a href="http://web-hub.cn">Home</a></li>
+      
+      <li><a href="https://github.com/Hulkye">Github</a></li>
+      
+      <li><a href="http://weibo.com/">Weibo</a></li>
+      
+    </ul>
+    <div class="footer-theme-info">
+      Theme <a href="//github.com/sabrinaluo/hexo-theme-replica">Replica</a>
+      by <a href="//github.com/sabrinaluo">Hiitea</a> ❤ Powered by Hexo
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>
