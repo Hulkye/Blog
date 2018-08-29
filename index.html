@@ -148,19 +148,40 @@
     <li class="selected">
       <a href="/">Overview</a></li>
     <li class="">
-      <a href="/archives">Posts <span class="counter">7</span></a>
+      <a href="/archives">Posts <span class="counter">8</span></a>
     </li>
     <li class="">
       <a href="/categories">Categories <span
                 class="counter">4</span></a></li>
     <li class="">
-      <a href="/tags">Tags <span class="counter">10</span></a></li>
+      <a href="/tags">Tags <span class="counter">11</span></a></li>
   </ul>
 </nav>
 
     <div class="body-secondary">
       <p class="right-title">Recent post</p>
       <ul class="recent-post clearfix">
+        
+        <li class="recent-post-item">
+          <div class="clearfix">
+            <h5 class="post-title text-ellipsis">
+              <i class="fa fa-bars"></i>
+              <a href="/2018/08/29/JavaScript 的 this 指向问题深度解析/">JavaScript 的 this 指向问题深度解析</a>
+            </h5>
+            <p class="post-description text-ellipsis desktop-only">
+               
+ JavaScript 中的  this  指向问题有很多博客在解释，仍然有很多人问。上周我们的
+            </p>
+            <p class="post-info desktop-only">
+              <span>
+                
+                  <a class="category-link" href="/categories/JavaScript/"><i class="fa fa-folder-open"></i> JavaScript</a>
+                
+              </span>
+              <span><i class="fa fa-tag"></i> 2 </span>
+            </p>
+          </div>
+        </li>
         
         <li class="recent-post-item">
           <div class="clearfix">
@@ -268,26 +289,6 @@
           </div>
         </li>
         
-        <li class="recent-post-item">
-          <div class="clearfix">
-            <h5 class="post-title text-ellipsis">
-              <i class="fa fa-bars"></i>
-              <a href="/2018/08/28/Ajax 的全面总结/">Ajax的全面总结</a>
-            </h5>
-            <p class="post-description text-ellipsis desktop-only">
-                 一.什么是Ajax  Ajax(Asynchronous JavaScript and XML
-            </p>
-            <p class="post-info desktop-only">
-              <span>
-                
-                  <a class="category-link" href="/categories/归纳总结/"><i class="fa fa-folder-open"></i> 归纳总结</a>
-                
-              </span>
-              <span><i class="fa fa-tag"></i> 2 </span>
-            </p>
-          </div>
-        </li>
-        
       </ul>
       <div class="calendar-container" id="calendar">
   <div class="calendar">
@@ -375,7 +376,7 @@
 
 
 <script>
-  var posts = [{"date":"2018-08-28","title":"大前端完整学习路线","url":"http://web-hub.cn/2018/08/28/大前端完整学习路线/"},{"date":"2018-08-28","title":"Ajax的全面总结","url":"http://web-hub.cn/2018/08/28/Ajax 的全面总结/"},{"date":"2018-08-28","title":"【推荐收藏】前端代码合集","url":"http://web-hub.cn/2018/08/28/【推荐收藏】前端代码合集/"},{"date":"2018-08-29","title":"Ajax技术细节","url":"http://web-hub.cn/2018/08/29/Ajax技术细节/"},{"date":"2018-08-29","title":"HTTP请求中GET和POST的区别","url":"http://web-hub.cn/2018/08/29/HTTP请求中GET和POST的区别/"},{"date":"2018-08-29","title":"Javascript思维导图","url":"http://web-hub.cn/2018/08/29/Javascript思维导图/"},{"date":"2018-08-29","title":"聊一聊HTTPS那些事儿","url":"http://web-hub.cn/2018/08/29/聊一聊HTTPS那些事儿/"}];
+  var posts = [{"date":"2018-08-28","title":"大前端完整学习路线","url":"http://web-hub.cn/2018/08/28/大前端完整学习路线/"},{"date":"2018-08-28","title":"Ajax的全面总结","url":"http://web-hub.cn/2018/08/28/Ajax 的全面总结/"},{"date":"2018-08-28","title":"【推荐收藏】前端代码合集","url":"http://web-hub.cn/2018/08/28/【推荐收藏】前端代码合集/"},{"date":"2018-08-29","title":"Ajax技术细节","url":"http://web-hub.cn/2018/08/29/Ajax技术细节/"},{"date":"2018-08-29","title":"HTTP请求中GET和POST的区别","url":"http://web-hub.cn/2018/08/29/HTTP请求中GET和POST的区别/"},{"date":"2018-08-29","title":"Javascript思维导图","url":"http://web-hub.cn/2018/08/29/Javascript思维导图/"},{"date":"2018-08-29","title":"JavaScript 的 this 指向问题深度解析","url":"http://web-hub.cn/2018/08/29/JavaScript 的 this 指向问题深度解析/"},{"date":"2018-08-29","title":"聊一聊HTTPS那些事儿","url":"http://web-hub.cn/2018/08/29/聊一聊HTTPS那些事儿/"}];
   var today = moment().format('YYYY-MM-DD');
   var oneYearAgo = moment(today).subtract(1, 'years');
   posts = posts.filter(function(post) {
